@@ -23,7 +23,7 @@ class ApiController extends Controller
     //Profile Api (GET)
     public function profile()
     {
-
+        dd("hello middleware");
     }
 
 
