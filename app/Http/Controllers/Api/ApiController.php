@@ -48,7 +48,8 @@ class ApiController extends Controller
 
                 $user = Auth::user();
 
-                $token = $user->createToken('myToken')->accessToken;
+                $token = $request->user()->createToken('myToken')->accessToken;
+
 
                 return response()->json(['status' => true , 'message' => 'Login Successfully' , 'token' => $token]);
 
@@ -64,6 +65,10 @@ class ApiController extends Controller
     //Profile Api (GET)
     public function profile()
     {
+
+        $user = Auth::user();
+
+        return response()->json(['status' => 'true' , 'message' => 'Profile Information', 'data' => $user]);
 
     }
 
