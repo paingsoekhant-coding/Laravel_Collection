@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Passport\TokenRepository;
+
 
 class ApiController extends Controller
 {
@@ -46,7 +48,7 @@ class ApiController extends Controller
             'email' => $request->email,
             'password' => $request->password])) {
 
-                $user = Auth::user();
+
 
                 $token = $request->user()->createToken('myToken')->accessToken;
 
@@ -76,6 +78,19 @@ class ApiController extends Controller
     //Logout Api (GET)
     public function logout()
     {
+
+
+        $deleteToken = app(TokenRepository::class);
+      $result =  Auth()->user()->$deleteToken->revokeAccessToken();
+
+      dd($result);
+
+
+
+        return response()->json([
+            'status'=>true,
+            'message' => "user logged out succefully"
+        ]);
 
     }
 }
