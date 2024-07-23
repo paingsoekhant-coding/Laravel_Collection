@@ -1,0 +1,6 @@
+[
+  {
+    "type": "sqlite",
+    "path": "d:\\OAuth\\OAuth3\\database\\database.sqlite"
+  }
+]
